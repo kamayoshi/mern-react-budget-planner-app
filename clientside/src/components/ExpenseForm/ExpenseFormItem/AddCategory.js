@@ -40,14 +40,14 @@ const AddCategory = ({ dispatch }) => {
   return (
     <FormModal dispatch={dispatch}>
       <div className="addPerson--modal">
-        <h3>New Category</h3>
+        <h3>Нова категорія</h3>
         <input
           ref={categoryRef}
           type="text"
-          placeholder="Type name of the new category..."
+          placeholder="Введіть назву нової категорії..."
           onChange={checkIsExist}
         />
-        {isExist && <p>This category name already exist...</p>}
+        {isExist && <p>Категорія з такою назвою вже існує...</p>}
         <Form.Submit
           style={
             status.info === true
@@ -59,13 +59,13 @@ const AddCategory = ({ dispatch }) => {
           disabled={isExist}
           label={
             !status.status ? (
-              "ADD"
+              "ДОДАТИ"
             ) : status.info === null ? (
               <Icon.Spinner size="15" />
             ) : status.info === true ? (
               <Icon.Success size="16" />
             ) : (
-              "Something went wrong"
+              "Щось пішло не так"
             )
           }
           onClick={add}

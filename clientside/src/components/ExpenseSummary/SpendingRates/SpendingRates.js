@@ -10,28 +10,28 @@ const SpendingRates = ({ rates }) => {
 
   const sample = [
     {
-      title: "Sample",
+      title: "Приклад",
       value: 50,
       color: "black",
       weekly: 0,
       montly: 0,
     },
     {
-      title: "Sample 2",
+      title: "Приклад 2",
       value: 50,
       color: "black",
       weekly: 0,
       montly: 0,
     },
     {
-      title: "Sample 3",
+      title: "Приклад 3",
       value: 50,
       color: "black",
       weekly: 0,
       montly: 0,
     },
     {
-      title: "Sample 4",
+      title: "Приклад 4",
       value: 50,
       color: "black",
       weekly: 0,
@@ -41,7 +41,7 @@ const SpendingRates = ({ rates }) => {
 
   return (
     <div className="spending-rates">
-      <h3>Spending rates</h3>
+      <h3>Витрати за категоріями</h3>
       <div className="chart-area">
         <div className="_chart">
           <PieChart
@@ -92,14 +92,14 @@ const SpendingRates = ({ rates }) => {
               <div className="colorBox" />
               <label>{item.title}</label>
               <div className="this-month">
-                <span>This month:</span> -{currencyIcon(localStorage.getItem("currency"))}{item.montly.toFixed(1)}
+                <span>Цього місяця:</span> -{currencyIcon(localStorage.getItem("currency"))}{item.montly.toFixed(1)}
               </div>
               <div className="daily-avg">
-                <span>This week:</span> -{currencyIcon(localStorage.getItem("currency"))}{item.weekly.toFixed(1)}
+                <span>Цього тижня:</span> -{currencyIcon(localStorage.getItem("currency"))}{item.weekly.toFixed(1)}
               </div>
             </div>
           ))}
-          { rates.length < 1 && "There is no records yet..." }
+          { rates.length < 1 && "Ще немає записів..." }
         </div>
       </div>
     </div>

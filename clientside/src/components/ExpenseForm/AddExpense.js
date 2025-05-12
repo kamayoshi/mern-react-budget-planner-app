@@ -60,55 +60,55 @@ const AddExpense = ({ dispatch, selector, tab }) => {
           className="_addPerson--btn"
           onClick={() => dispatch(toggleExpense("addPerson"))}
         >
-          Add Person
+          Додати особу
         </button>
         <button
           type="button"
           className="_addCategory--btn"
           onClick={() => dispatch(toggleExpense("addCategory"))}
         >
-          Add Category
+          Додати категорію
         </button>
       </div>
       <div className="add-expense-form">
         <Form.Form submit={submit}>
           <Form.ExpenseName
-            label="Name"
-            selected="Food"
+            label="Назва"
+            selected="Їжа"
             dispatch={dispatch}
             selector={selector}
             error={error.expense}
             seterror={seterror}
           />
           <Form.ExpensePrice
-            label="Price"
-            selected="Food"
+            label="Сума"
+            selected="Їжа"
             dispatch={dispatch}
             selector={selector}
             error={error.price}
             seterror={seterror}
           />
           <Form.SpendingBy
-            label="Spending by"
-            selected="Food"
+            label="Хто витратив"
+            selected="Їжа"
             dispatch={dispatch}
             selector={selector}
           />
           <Form.Date
-            label="Date"
-            selected="Food"
+            label="Дата"
+            selected="Їжа"
             dispatch={dispatch}
             selector={selector}
           />
           <Form.Note
-            label="Note"
-            selected="Food"
+            label="Нотатка"
+            selected="Їжа"
             dispatch={dispatch}
             selector={selector}
           />
           <Form.Submit
-            label="ADD"
-            selected="Food"
+            label="ДОДАТИ"
+            selected="Їжа"
             dispatch={dispatch}
             setSuccess={setSuccess}
             selector={selector}
@@ -121,16 +121,16 @@ const AddExpense = ({ dispatch, selector, tab }) => {
       {success && (
         <Notification
           type={SUCCESSFUL}
-          label="Successful"
-          text="New expense successfully added..."
+          label="Успішно"
+          text="Нові витрати успішно додано..."
           dispatch={dispatch}
         />
       )}
       {Object.values(error).some((val) => val !== false) && (
         <Notification
           type={ERROR}
-          label="An input is empty"
-          text="Please fill all inputs on the form..."
+          label="Заповніть всі поля"
+          text="Будь ласка, заповніть всі поля форми..."
           dispatch={dispatch}
         />
       )}

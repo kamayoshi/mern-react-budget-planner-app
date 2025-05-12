@@ -4,7 +4,7 @@ import { day, month, year } from "../../../utils/lists"
 
 export const IncomeDate = ({ prop }) => {
   const { label, dispatch, selector } = prop;
-  // date select handler
+  // обробник вибору дати
 
   const dateToggle = (type) => {
     switch (type) {
@@ -50,11 +50,17 @@ export const IncomeDate = ({ prop }) => {
             <div
               className={`date-list ${selector.toggle.dateDay ? "active" : ""}`}
             >
-              {
-                day.map((item, index) => (
-                  <button key={index} type="button" name="day" value={item} onClick={dateHandler}>{item}</button>
-                ))
-              }
+              {day.map((item, index) => (
+                <button 
+                  key={index} 
+                  type="button" 
+                  name="day" 
+                  value={item} 
+                  onClick={dateHandler}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </div>
           <div className="_month">
@@ -63,7 +69,7 @@ export const IncomeDate = ({ prop }) => {
               className="selectMonth"
               onClick={() => dateToggle("month")}
             >
-              {selector.date.month}
+              {month.find(m => m.value === parseInt(selector.date.month))?.label || selector.date.month}
               <span>
                 <Icon.Down size="8" />
               </span>
@@ -73,11 +79,17 @@ export const IncomeDate = ({ prop }) => {
                 selector.toggle.dateMonth ? "active" : ""
               }`}
             >
-              {
-                month.map((item, index) => (
-                  <button key={index} type="button" name="month" value={item.value} label={item.label} onClick={dateHandler}>{item.label}</button>
-                ))
-              }
+              {month.map((item, index) => (
+                <button 
+                  key={index} 
+                  type="button" 
+                  name="month" 
+                  value={item.value} 
+                  onClick={dateHandler}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
           </div>
           <div className="_year">
@@ -96,11 +108,17 @@ export const IncomeDate = ({ prop }) => {
                 selector.toggle.dateYear ? "active" : ""
               }`}
             >
-              {
-                year.map((item, index) => (
-                  <button key={index} type="button" name="year" value={item} onClick={dateHandler}>{item}</button>
-                ))
-              }
+              {year.map((item, index) => (
+                <button 
+                  key={index} 
+                  type="button" 
+                  name="year" 
+                  value={item} 
+                  onClick={dateHandler}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </div>
         </div>

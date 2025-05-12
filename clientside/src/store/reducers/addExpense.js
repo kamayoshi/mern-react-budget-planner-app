@@ -4,9 +4,9 @@ import moment from "moment";
 const date = moment().format("l").split("/");
 
 const initialState = {
-  expense: { category: "Uncategorized", name: "" },
+  expense: { category: "Без категорії", name: "" },
   price: { currency: localStorage.getItem("currency"), price: 0 },
-  spendingBy: "Not selected",
+  spendingBy: "Не обрано",
   date: {
     day: date[1],
     month: date[0],
@@ -24,6 +24,7 @@ const initialState = {
     addCategory: false,
   },
 };
+
 const addExpenseReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.ADD_EXPENSE_FORM:
@@ -49,9 +50,9 @@ const addExpenseReducer = (state = initialState, action) => {
     case actionType.CLEAR_EXPENSE:
       return {
         ...state,
-        expense: { category: "Uncategorized", name: "" },
+        expense: { category: "Без категорії", name: "" },
         price: { currency: localStorage.getItem("currency"), price: 0 },
-        spendingBy: "Not selected",
+        spendingBy: "Не обрано",
         date: {
           day: date[1],
           month: date[0],

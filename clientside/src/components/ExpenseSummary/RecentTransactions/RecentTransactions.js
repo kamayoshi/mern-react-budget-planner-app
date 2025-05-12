@@ -16,12 +16,11 @@ const RecentTransactions = ({ openModal }) => {
   const lists = list;
   lists.sort((x, y) => new Date(y.date) - new Date(x.date));
 
-  
-
   return (
     <div className="recent-transactions">
-      <label><h3>Last 3 transactions</h3>
-      <Link to="/transactions">SEE ALL</Link>
+      <label>
+        <h3>Останні 3 транзакції</h3>
+        <Link to="/transactions">ПЕРЕГЛЯНУТИ ВСІ</Link>
       </label>
       <ul className="_list">
         {lists.slice(0, 3).map((item, index) => {
@@ -31,11 +30,11 @@ const RecentTransactions = ({ openModal }) => {
           return item.source ? (
             <li key={index} className="fund--li" onClick={() => openModal(item._id, "fund")}>
               <span className="item-category">{item.source}</span>
-              <span className="item-name">{item.note}{item.note === "" && "No note"}</span>
+              <span className="item-name">{item.note || "Без примітки"}</span>
               <span className="item-spendingBy">{item.earningBy}</span>
               <span className="item-date">{dateShow(date)}</span>
               <span className="item-price">
-                <div>{currencyIcon(item.price.currency)}{item.price.price}</div>
+                <div>+{currencyIcon(item.price.currency)}{item.price.price}</div>
               </span>
             </li>
           ) : (
@@ -52,7 +51,7 @@ const RecentTransactions = ({ openModal }) => {
         })}
 
         {lists.length < 1 && (
-          <p style={{ marginBottom: "15px" }}>There is no records yet...</p>
+          <p style={{ marginBottom: "15px" }}>Ще немає записів...</p>
         )}
       </ul>
     </div>

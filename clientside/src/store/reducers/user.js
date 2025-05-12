@@ -13,10 +13,10 @@ const userReducer = (state = initialState, action) => {
     case actionType.SIGNIN:
       localStorage.setItem("token", action.data.accessToken);
       localStorage.setItem("firstLogin", true);
-      localStorage.setItem("currency", "Dolar")
+      localStorage.setItem("currency", "Долар");
       window.setTimeout(() => {
         localStorage.removeItem("token");
-    }, 3 * 24 * 3600 * 1000);
+      }, 3 * 24 * 3600 * 1000);
       return {
         _id: action.data._id,
         fullname: action.data.full,
@@ -24,7 +24,7 @@ const userReducer = (state = initialState, action) => {
         token: JSON.stringify({ ...action?.data }),
         isLogged: true,
       };
-      case actionType.USER_LOADED:
+    case actionType.USER_LOADED:
       return {
         ...state,
         _id: action.user._id,
@@ -33,7 +33,7 @@ const userReducer = (state = initialState, action) => {
         email: action.user.email,
         isLogged: true,
       };
-      case actionType.SET_LOGGED:
+    case actionType.SET_LOGGED:
       return {
         ...state,
         isLogged: true,

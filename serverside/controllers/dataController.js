@@ -1,20 +1,20 @@
-// model imports
+// імпорт моделей
 import RecordModel from "../models/record.js";
 
-// -> controllers
+// -> контролери
 
 export const newRecord = async (req, res) => {
-  // req seperation
+  // отримання даних з запиту
   const { user } = req.body;
   try {
-    // check if req is empty
-    if (!user) return res.status(400).json({ msg: "Please fill in all fields." });
+    // перевірка наявності даних
+    if (!user) return res.status(400).json({ msg: "Будь ласка, заповніть всі поля." });
     const newRecord = new RecordModel({
       user: user,
     });
     await newRecord.save();
     return res.json({
-      msg: "Record table successfully added!",
+      msg: "Таблицю записів успішно додано!",
     });
   } catch (err) {
     return res.status(500).json({ msg: err.message });
@@ -23,13 +23,13 @@ export const newRecord = async (req, res) => {
 
 export const addToRecord = async (req, res) => {
   const userID = req.params.userID;
-  // req seperation
+  // отримання даних з запиту
   const { expenses, funds, persons, categories, sources } = req.body;
   try {
-    // check if req is empty
+    // перевірка наявності даних
     if (!userID)
-      return res.status(400).json({ msg: "Please fill in all fields." });
-    // check if record exist
+      return res.status(400).json({ msg: "Будь ласка, заповніть всі поля." });
+    // перевірка існування запису
     const record = await RecordModel.findOne({ user: userID });
     if (record) {
       await RecordModel.findOneAndUpdate(
@@ -43,9 +43,9 @@ export const addToRecord = async (req, res) => {
           } },
         { new: true }
       );
-      return res.json({ msg: "Update successfully." });
+      return res.json({ msg: "Дані успішно оновлено." });
     } else {
-      return res.status(400).json({ msg: "This record does not exist." });
+      return res.status(400).json({ msg: "Цей запис не існує." });
     }
   } catch (err) {
     return res.status(500).json({ msg: err.message });
@@ -60,10 +60,10 @@ export const fetchData = async (req, res) => {
       if (data) {
         return res.status(200).json({ msg: data });
       } else {
-        return res.status(400).json({ msg: "This doesnt exist!" });
+        return res.status(400).json({ msg: "Цей запис не існує!" });
       }
     }
   } catch (err) {
-    return res.status(500).json({ msg: "Something went wrong" });
+    return res.status(500).json({ msg: "Щось пішло не так" });
   }
 };

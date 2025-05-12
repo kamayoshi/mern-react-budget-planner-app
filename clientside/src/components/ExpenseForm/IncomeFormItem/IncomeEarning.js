@@ -3,7 +3,7 @@ import { currency } from "../../../utils/lists";
 
 export const IncomeEarning = ({ prop }) => {
   const { label, dispatch, selector, error, seterror } = prop;
-  // earning handler
+  // обробник вибору валюти та суми
 
   const earningHandler = (e) => {
     dispatch(
@@ -30,7 +30,7 @@ export const IncomeEarning = ({ prop }) => {
               selector.toggle.priceCurrency ? "active" : ""
             }`}
           >
-            <input type="text" placeholder="Search currency..." />
+            <input type="text" placeholder="Пошук валюти..." />
             {currency.map((item, index) => (
               <button
                 key={index}
@@ -47,7 +47,7 @@ export const IncomeEarning = ({ prop }) => {
         <input
           type="number"
           className="income-earning"
-          placeholder="Type price..."
+          placeholder="Введіть суму..."
           step="0.1"
           min="0.1"
           max="9999999999"

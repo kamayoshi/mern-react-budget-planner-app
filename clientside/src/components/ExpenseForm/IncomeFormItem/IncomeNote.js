@@ -6,10 +6,15 @@ export const IncomeNote = ({ prop }) => {
       <div className="addExpenseItem">
         <label>{label}</label>
         <div className="__inner">
-          <textarea className="note" placeholder="Leave a note..." onChange={(e) =>
-            dispatch(addIncomeItem("note", e.currentTarget.value))
-          } defaultValue={selector.note}></textarea>
+          <textarea 
+            className="note" 
+            placeholder="Залишити примітку..." 
+            onChange={(e) =>
+              dispatch(addIncomeItem("note", e.currentTarget.value))
+            } 
+            defaultValue={selector.note}
+          ></textarea>
         </div>
       </div>
     );
-  }
+}

@@ -1,11 +1,11 @@
 const currencyIcon = (currency) => {
   switch (currency) {
-    case "Dolar":
+    case "Долар":
       return "$";
-    case "Euro":
+    case "Євро":
       return "€";
-    case "TL":
-      return "₺";
+    case "Гривня":
+      return "₴";
     default:
       break;
   }

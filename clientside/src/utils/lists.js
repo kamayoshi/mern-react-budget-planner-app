@@ -1,76 +1,78 @@
-// date
+// дати
 
 export const day = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
   23, 24, 25, 26, 27, 28, 29, 30, 31,
 ];
+
 export const month = [
   {
-    label: "January",
+    label: "Січень",
     value: 1,
   },
   {
-    label: "February",
+    label: "Лютий",
     value: 2,
   },
   {
-    label: "March",
+    label: "Березень",
     value: 3,
   },
   {
-    label: "April",
+    label: "Квітень",
     value: 4,
   },
   {
-    label: "May",
+    label: "Травень",
     value: 5,
   },
   {
-    label: "June",
+    label: "Червень",
     value: 6,
   },
   {
-    label: "July",
+    label: "Липень",
     value: 7,
   },
   {
-    label: "August",
+    label: "Серпень",
     value: 8,
   },
   {
-    label: "September",
+    label: "Вересень",
     value: 9,
   },
   {
-    label: "October",
+    label: "Жовтень",
     value: 10,
   },
   {
-    label: "November",
+    label: "Листопад",
     value: 11,
   },
   {
-    label: "December",
+    label: "Грудень",
     value: 12,
   },
 ];
+
 export const year = [
   2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012,
 ];
 
-// currency
+// валюти
 
 export const currency = [
   {
-    label: "$ Dolar",
-    value: "Dolar",
+    label: "$ Долар",
+    value: "Долар",
   },
   {
-    label: "€ Euro",
-    value: "Euro",
+    label: "€ Євро",
+    value: "Євро",
   },
   {
-    label: "₺ TL",
-    value: "TL",
+    label: "₴ Гривня",
+    value: "Гривня",
   },
 ];

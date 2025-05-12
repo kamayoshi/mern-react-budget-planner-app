@@ -21,8 +21,8 @@ const SignIn = () => {
     return (
       <Notification
         type={ERROR}
-        label="Something went wrong"
-        text="Your email or password was incorrect..."
+        label="Щось пішло не так"
+        text="Ваш email або пароль неправильні..."
       />
     );
   };
@@ -51,28 +51,28 @@ const SignIn = () => {
     <Wrapper type={WRAPPER_VERTICAL_CENTER}>
       <div className="sign-card">
         <Form.Form>
-          <h1>Sign In</h1>
+          <h1>Вхід</h1>
           <Form.SignInput
             type="text"
-            label="Email adress"
+            label="Електронна адреса"
             placeholder="email@provider.com"
             name="email"
             onBlur={inputHandler}
           />
           <Form.SignInput
             type="password"
-            label="Password"
-            placeholder="Your password"
+            label="Пароль"
+            placeholder="Ваш пароль"
             name="password"
             onBlur={inputHandler}
           />
           <Form.SignButton
-            label={loading ? <Icon.Spinner size="18" /> : "Continue"}
+            label={loading ? <Icon.Spinner size="18" /> : "Продовжити"}
             style={loading ? { padding: "12.5px 30px" } : {}}
             onClick={submitHandler}
           />
           <div className="pageChange">
-            <Link to="/signup">Don't have an account yet?</Link>
+            <Link to="/signup">Ще не маєте акаунта?</Link>
           </div>
         </Form.Form>
       </div>

@@ -46,30 +46,74 @@ const AddIncome = ({ tab, dispatch, selector }) => {
     <div className={`tab ${tab.moving ? "moving" : "stand"} ${tab.translate === 1 && "shadow-none"}`}>
       <div className="tab-changer-bottom">
         <button type="button" className="_addPerson--btn" onClick={() => dispatch(toggleIncome("addSource"))}>
-          Add Source
+          Додати джерело
         </button>
       </div>
       <div className="add-expense-form">
         <Form.Form submit={submit}>
-          <Form.IncomeSource label="Source" selected="Food" dispatch={dispatch} selector={selector} error={error.source}
-            seterror={seterror} />
-          <Form.IncomeEarning label="Price" selected="Food" dispatch={dispatch} selector={selector} error={error.price}
-            seterror={seterror} />
-          <Form.EarningBy label="Earning By" selected="Food" dispatch={dispatch} selector={selector} error={error.earningBy}
-            seterror={seterror} />
-          <Form.IncomeDate label="Date" selected="Food" dispatch={dispatch} selector={selector} />
-          <Form.IncomeNote label="Note" selected="Food" dispatch={dispatch} selector={selector} />
-          <Form.Submit label="ADD" selected="Food" dispatch={dispatch} selector={selector} setSuccess={setSuccess} />
+          <Form.IncomeSource
+            label="Джерело"
+            selected="Їжа"
+            dispatch={dispatch}
+            selector={selector}
+            error={error.source}
+            seterror={seterror}
+          />
+          <Form.IncomeEarning
+            label="Сума"
+            selected="Їжа"
+            dispatch={dispatch}
+            selector={selector}
+            error={error.price}
+            seterror={seterror}
+          />
+          <Form.EarningBy
+            label="Отримано від"
+            selected="Їжа"
+            dispatch={dispatch}
+            selector={selector}
+            error={error.earningBy}
+            seterror={seterror}
+          />
+          <Form.IncomeDate
+            label="Дата"
+            selected="Їжа"
+            dispatch={dispatch}
+            selector={selector}
+          />
+          <Form.IncomeNote
+            label="Нотатка"
+            selected="Їжа"
+            dispatch={dispatch}
+            selector={selector}
+          />
+          <Form.Submit
+            label="ДОДАТИ"
+            selected="Їжа"
+            dispatch={dispatch}
+            selector={selector}
+            setSuccess={setSuccess}
+          />
         </Form.Form>
       </div>
       {selector.toggle.addSource && (
         <AddSource dispatch={dispatch} />
       )}
       {success && (
-        <Notification type={SUCCESSFUL} label="Successful" text="New fund successfully added..." dispatch={dispatch} />
+        <Notification
+          type={SUCCESSFUL}
+          label="Успішно"
+          text="Новий дохід успішно додано..."
+          dispatch={dispatch}
+        />
       )}
       {Object.values(error).some(val => val !== false) && (
-        <Notification type={ERROR} label="An input is empty" text="Please fill all inputs on the form..." dispatch={dispatch} />
+        <Notification
+          type={ERROR}
+          label="Не заповнено поле"
+          text="Будь ласка, заповніть всі поля у формі..."
+          dispatch={dispatch}
+        />
       )}
     </div>
   );

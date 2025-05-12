@@ -7,7 +7,7 @@ import { day, month, year } from "../../../utils/lists"
 
 export const ExpenseDate = ({ prop }) => {
   const { label, dispatch, selector } = prop;
-  // date select handler
+  // обробник вибору дати
 
   const dateToggle = (type) => {
     switch (type) {
@@ -34,7 +34,6 @@ export const ExpenseDate = ({ prop }) => {
     );
   };
 
- 
   return (
     <div className="addExpenseItem">
       <label>{label}</label>
@@ -54,11 +53,17 @@ export const ExpenseDate = ({ prop }) => {
             <div
               className={`date-list ${selector.toggle.dateDay ? "active" : ""}`}
             >
-              {
-                day.map((item, index) => (
-                  <button key={index} type="button" name="day" value={item} onClick={dateHandler}>{item}</button>
-                ))
-              }
+              {day.map((item, index) => (
+                <button 
+                  key={index} 
+                  type="button" 
+                  name="day" 
+                  value={item} 
+                  onClick={dateHandler}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </div>
           <div className="_month">
@@ -67,7 +72,7 @@ export const ExpenseDate = ({ prop }) => {
               className="selectMonth"
               onClick={() => dateToggle("month")}
             >
-              {selector.date.month}
+              {month.find(m => m.value === parseInt(selector.date.month))?.label || selector.date.month}
               <span>
                 <Icon.Down size="8" />
               </span>
@@ -77,11 +82,17 @@ export const ExpenseDate = ({ prop }) => {
                 selector.toggle.dateMonth ? "active" : ""
               }`}
             >
-              {
-                month.map((item, index) => (
-                  <button key={index} type="button" name="month" value={item.value} label={item.label} onClick={dateHandler}>{item.label}</button>
-                ))
-              }
+              {month.map((item, index) => (
+                <button 
+                  key={index} 
+                  type="button" 
+                  name="month" 
+                  value={item.value} 
+                  onClick={dateHandler}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
           </div>
           <div className="_year">
@@ -98,11 +109,17 @@ export const ExpenseDate = ({ prop }) => {
             <div
               className={`date-list ${selector.toggle.dateYear ? "active" : ""}`}
             >
-              {
-                year.map((item, index) => (
-                  <button key={index} type="button" name="year" value={item} onClick={dateHandler}>{item}</button>
-                ))
-              }
+              {year.map((item, index) => (
+                <button 
+                  key={index} 
+                  type="button" 
+                  name="year" 
+                  value={item} 
+                  onClick={dateHandler}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </div>
         </div>

@@ -39,14 +39,14 @@ const AddPerson = ({ dispatch }) => {
   return (
     <FormModal dispatch={dispatch}>
       <div className="addPerson--modal">
-        <h3>New Person</h3>
+        <h3>Нова особа</h3>
         <input
           ref={personRef}
           type="text"
-          placeholder="Type name of the new person..."
+          placeholder="Введіть ім'я нової особи..."
           onChange={checkIsExist}
         />
-        {isExist && <p>This person name already exist...</p>}
+        {isExist && <p>Особа з таким ім'ям вже існує...</p>}
         <Form.Submit
           style={
             status.info === true
@@ -58,13 +58,13 @@ const AddPerson = ({ dispatch }) => {
           disabled={isExist}
           label={
             !status.status ? (
-              "ADD"
+              "ДОДАТИ"
             ) : status.info === null ? (
               <Icon.Spinner size="15" />
             ) : status.info === true ? (
               <Icon.Success size="16" />
             ) : (
-              "Something went wrong"
+              "Щось пішло не так"
             )
           }
           onClick={add}

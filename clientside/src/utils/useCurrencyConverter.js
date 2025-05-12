@@ -7,14 +7,14 @@ const useCurrencyConverter = () => {
 
   const convertCurrency = async (price, currency) => {
     switch (currency) {
-      case "Dolar":
+      case "Долар":
         convert(price / liveCurrency.USD);
         return price / liveCurrency.USD;
 
-      case "Euro":
+      case "Євро":
         convert(price / liveCurrency.EUR);
         return price / liveCurrency.EUR;
-      case "TL":
+      case "Гривня":
         convert(price / liveCurrency.TRY);
         return price / liveCurrency.TRY;
 

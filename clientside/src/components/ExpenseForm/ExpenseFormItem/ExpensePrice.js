@@ -6,7 +6,7 @@ import { currency } from "../../../utils/lists";
 
 export const ExpensePrice = ({ prop }) => {
   const { label, dispatch, selector, error, seterror } = prop;
-  // price handler
+  // обробник валюти та ціни
 
   const priceHandler = (e) => {
     dispatch(
@@ -33,7 +33,7 @@ export const ExpensePrice = ({ prop }) => {
               selector.toggle.priceCurrency ? "active" : ""
             }`}
           >
-            <input type="text" placeholder="Search currency..." />
+            <input type="text" placeholder="Пошук валюти..." />
             {currency.map((item, index) => (
               <button
                 key={index}
@@ -50,7 +50,7 @@ export const ExpensePrice = ({ prop }) => {
         <input
           type="number"
           className="expense-price"
-          placeholder="Type price..."
+          placeholder="Введіть суму..."
           step="1"
           max="9999999999"
           onClick={() => seterror({ ...error, expense: false })}

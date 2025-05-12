@@ -15,13 +15,11 @@ const BudgetBoard = ({ debt, currentMoney, rates }) => {
     setDaily(parseInt(result / 30 / 30));
   }, [rates]);
 
-
-
   return (
     <div className="summary-top">
       <div className="budget-board">
         <div className="_current-money">
-          <label>Current money</label>
+          <label>Поточні кошти</label>
           <div className="price-row">
             {currencyIcon(localStorage.getItem("currency"))}
             {currentMoney}
@@ -34,12 +32,12 @@ const BudgetBoard = ({ debt, currentMoney, rates }) => {
             )}
           </div>
           <span>
-            Avg daily loss: {daily}
+            Середні денні витрати: {daily}
             {currencyIcon(localStorage.getItem("currency"))}
           </span>
         </div>
         <div className="_debt">
-          <label>Debt</label>
+          <label>Борг</label>
           <div className="price-row">
             {currencyIcon(localStorage.getItem("currency"))}
             {debt}

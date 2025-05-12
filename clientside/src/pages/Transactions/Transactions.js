@@ -84,7 +84,7 @@ const Transactions = ({ className, openModal }) => {
           onClick={() => openModal(item._id, "fund")}
         >
           <div className="justify-center categorySpan">{item.source}</div>
-          <div>No name</div>
+          <div>Без назви</div>
           <div className="note-transactions noteSpan">{item.note}</div>
           <div className="justify-center personSpan">{item.earningBy}</div>
           <div className="justify-center dateSpan">{dateShow(date)}</div>
@@ -115,77 +115,77 @@ const Transactions = ({ className, openModal }) => {
           <Link to="/">
             <Icon.Back size="25" />{" "}
           </Link>{" "}
-          <h2>Transactions</h2>
+          <h2>Транзакції</h2>
         </label>
         <div className="transaction-table">
           <header>
             <div className="filters">
               <div className="filter">
-                <label>Sort by:</label>
+                <label>Сортувати за:</label>
                 <button
                   type="button"
                   className={`${!activeSort && "active"}`}
                   onClick={() => setActiveSort()}
                 >
-                  All
+                  Всі
                 </button>
                 <button
                   type="button"
                   className={`${activeSort === EXPENSE && "active"}`}
                   onClick={() => setActiveSort(EXPENSE)}
                 >
-                  Expense
+                  Витрати
                 </button>
                 <button
                   type="button"
                   className={`${activeSort === FUND && "active"}`}
                   onClick={() => setActiveSort(FUND)}
                 >
-                  Fund
+                  Надходження
                 </button>
                 <button
                   type="button"
                   className={`${activeSort === PRICE && "active"}`}
                   onClick={() => setActiveSort(PRICE)}
                 >
-                  Price
+                  Ціною
                 </button>
                 <button
                   type="button"
                   className={`${activeSort === DATE && "active"}`}
                   onClick={() => setActiveSort(DATE)}
                 >
-                  Date
+                  Датою
                 </button>
               </div>
             </div>
             <div className="search">
-              <input type="text" placeholder="Search..." />
+              <input type="text" placeholder="Пошук..." />
             </div>
           </header>
           <div className="transactions">
             <div className="labels">
-              <div className="categorySpan">Category</div>
-              <div>Name</div>
-              <div className="note-transactions noteSpan">Note</div>
-              <div className="personSpan">Person</div>
-              <div className="dateSpan">Date</div>
-              <div>Price</div>
+              <div className="categorySpan">Категорія</div>
+              <div>Назва</div>
+              <div className="note-transactions noteSpan">Примітка</div>
+              <div className="personSpan">Особа</div>
+              <div className="dateSpan">Дата</div>
+              <div>Сума</div>
             </div>
             <div className="lists">
               {transData.length > 0 ? (
                 transData
               ) : (
-                <p style={{ padding: "20px" }}>There is no records...</p>
+                <p style={{ padding: "20px" }}>Немає записів...</p>
               )}
             </div>
           </div>
           <footer>
             <div className="item-counter">
-              There is <strong>{list.length}</strong> records
+              Знайдено <strong>{list.length}</strong> записів
             </div>
             <div className="pagination">
-              <label>Page: </label>
+              <label>Сторінка: </label>
               <PaginationButtons />
             </div>
           </footer>

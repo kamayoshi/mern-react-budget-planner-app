@@ -8,7 +8,7 @@ const Logout = () => {
   useEffect(() => {
     setTimeout(() => {
       localStorage.removeItem("token");
-      localStorage.removeItem("firstLogin", );
+      localStorage.removeItem("firstLogin");
       window.location.reload();
     }, 1500);
   }, []);
@@ -17,8 +17,8 @@ const Logout = () => {
     <Wrapper type={WRAPPER_VERTICAL_CENTER}>
       <div className="sign-card">
         <div className="logout-box">
-          <h1>You are about to logout</h1>
-          <p>Just a second...</p>
+          <h1>Ви виходите з системи</h1>
+          <p>Миттєво вийдемо...</p>
           <Icon.Spinner size="40" />
         </div>
       </div>

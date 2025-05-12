@@ -8,7 +8,7 @@ export const ExpenseNote = ({ prop }) => {
       <div className="__inner">
         <textarea
           className="note"
-          placeholder="Leave a note..."
+          placeholder="Залишити примітку..."
           defaultValue={selector.note}
           onChange={(e) =>
             dispatch(addExpenseItem("note", e.currentTarget.value))

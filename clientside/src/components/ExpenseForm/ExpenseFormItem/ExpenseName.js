@@ -10,7 +10,7 @@ export const ExpenseName = ({ prop }) => {
   const { label, dispatch, selector, error, seterror } = prop;
   const [searchTerm, setSearchTerm] = useState("");
 
-  // category select handler
+  // обробник вибору категорії
 
   const categoryHandler = (e) => {
     dispatch(
@@ -39,7 +39,7 @@ export const ExpenseName = ({ prop }) => {
           >
             <input
               type="text"
-              placeholder="Search category..."
+              placeholder="Пошук категорії..."
               onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
             />
             {recordState.categories
@@ -59,14 +59,14 @@ export const ExpenseName = ({ prop }) => {
               ))}
             {recordState.categories.filter((item) =>
               item.name.toLowerCase().match(new RegExp(searchTerm, "g"))
-            ).length < 1 && <p>There are no records...</p>}
+            ).length < 1 && <p>Не знайдено жодного запису...</p>}
           </div>
         </div>
         <input
           type="text"
           className="expense-description"
           name="name"
-          placeholder="Type your expense name..."
+          placeholder="Введіть назву витрати..."
           value={selector.expense.name}
           onClick={() => seterror({ ...error, expense: false })}
           onChange={(e) =>

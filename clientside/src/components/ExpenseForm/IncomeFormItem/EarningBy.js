@@ -7,7 +7,7 @@ export const EarningBy = ({ prop }) => {
   const { label, dispatch, selector } = prop;
   const [searchTerm, setSearchTerm] = useState("");
 
-  // earning by select handler
+  // обробник вибору особи
   const earningByHandler = (e) => {
     dispatch(addIncomeItem("earningBy", e.currentTarget.value));
   };
@@ -28,18 +28,28 @@ export const EarningBy = ({ prop }) => {
               selector.toggle.earningBy ? "active" : ""
             }`}
           >
-            <input type="text" placeholder="Search person..." onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
-            {recordState.persons.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).map((person, index) => (
-              <button
-              key={index}
-                type="button"
-                value={person.name}
-                onClick={earningByHandler}
-              >
-                {person.name}
-              </button>
-            ))}
-            {recordState.persons.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).length < 1 &&  <p>There are no records...</p>}
+            <input 
+              type="text" 
+              placeholder="Пошук особи..." 
+              onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} 
+            />
+            {recordState.persons
+              .filter((item) => 
+                item.name.toLowerCase().match(new RegExp(searchTerm, 'g')))
+              .map((person, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  value={person.name}
+                  onClick={earningByHandler}
+                >
+                  {person.name}
+                </button>
+              ))}
+            {recordState.persons.filter((item) => 
+              item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).length < 1 &&  
+              <p>Записи відсутні...</p>
+            }
           </div>
         </div>
       </div>

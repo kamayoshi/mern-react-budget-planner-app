@@ -31,10 +31,10 @@ const ExpenseSummary = ({ openModal }) => {
         };
         sumByCategories.push(res[value.category]);
       }
-      // montly calculate
-      // today
+      // розрахунок за місяць
+      // сьогодні
       const today = new Date();
-      // a month before
+      // місяць тому
       let lastMonthDate = new Date(new Date().setDate(today.getDate() - 30));
       const lastMonthDate_month = lastMonthDate.getUTCMonth() + 1;
       const lastMonthDate_day = lastMonthDate.getUTCDate();
@@ -45,14 +45,14 @@ const ExpenseSummary = ({ openModal }) => {
         lastMonthDate_day +
         "." +
         lastMonthDate_year;
-      // last 24 hrs
+      // останні 24 години
       let lastweek = new Date(new Date().setDate(today.getDate() - 7));
       const lastweek_month = lastweek.getUTCMonth() + 1;
       const lastweek_day = lastweek.getUTCDate();
       const lastweek_year = lastweek.getUTCFullYear();
       lastweek = lastweek_month + "." + lastweek_day + "." + lastweek_year;
-      // last 1 month
-      // post date
+      // останній місяць
+      // дата запису
       let postDate = new Date(value.date);
       const postMonth = postDate.getUTCMonth() + 1;
       const postDay = postDate.getUTCDate();
@@ -60,15 +60,14 @@ const ExpenseSummary = ({ openModal }) => {
       postDate = postMonth + "." + postDay + "." + postYear;
       if (new Date(lastMonthDate) <= new Date(postDate)) {
         switch (value.price.currency) {
-          case "Dolar":
+          case "Долар":
             res[value.category].montly = res[value.category].montly + (value.price.price / selector.record.currency.USD);
             break;
-          case "Euro":
+          case "Євро":
             res[value.category].montly = res[value.category].montly + (value.price.price / selector.record.currency.EUR);
             break;
-          case "TL":
+          case "Гривня":
             res[value.category].montly = res[value.category].montly + (value.price.price / selector.record.currency.TRY);
-
             break;
           default:
             return 0;
@@ -76,13 +75,13 @@ const ExpenseSummary = ({ openModal }) => {
       }
       if (new Date(lastweek) <= new Date(postDate)) {
         switch (value.price.currency) {
-          case "Dolar":
+          case "Долар":
             res[value.category].weekly = res[value.category].weekly + (value.price.price / selector.record.currency.USD);
             break;
-          case "Euro":
+          case "Євро":
             res[value.category].weekly = res[value.category].weekly + (value.price.price / selector.record.currency.EUR);
             break;
-          case "TL":
+          case "Гривня":
             res[value.category].weekly = res[value.category].weekly + (value.price.price / selector.record.currency.TRY);
             break;
           default:
@@ -90,33 +89,32 @@ const ExpenseSummary = ({ openModal }) => {
         }
       }
       switch (value.price.currency) {
-        case "Dolar":
+        case "Долар":
           res[value.category].value =+value.price.price / selector.record.currency.USD;
           break;
-        case "Euro":
+        case "Євро":
           res[value.category].value =+value.price.price / selector.record.currency.EUR;
           break;
-        case "TL":
+        case "Гривня":
           res[value.category].value =+value.price.price / selector.record.currency.TRY;
           break;
         default:
           return 0;
       }
-      // daily avg
+      // середньоденний показник
       if (new Date(lastMonthDate) <= new Date(postDate)) {
-       
         const diffTime = Math.abs(new Date(postDate) - new Date(lastMonthDate));
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         const a = (30 - diffDays) * 30;
         let b = 0;
         switch (value.price.currency) {
-          case "Dolar":
+          case "Долар":
             b = (a * value.price.price) / selector.record.currency.USD;
             break;
-          case "Euro":
+          case "Євро":
             b = (a * value.price.price) / selector.record.currency.EUR;
             break;
-          case "TL":
+          case "Гривня":
             b = (a * value.price.price) / selector.record.currency.TRY;
             break;
           default:
@@ -124,7 +122,6 @@ const ExpenseSummary = ({ openModal }) => {
         }
         res[value.category].dailyAvg = 
           (res[value.category].dailyAvg + b)
-        
       }
       return res;
     }, {});
@@ -133,31 +130,31 @@ const ExpenseSummary = ({ openModal }) => {
   }, [selector.record.expenses]);
 
   useEffect(() => {
-    // calculation current money and debt
-    // sum all funds
+    // розрахунок поточних коштів та боргів
+    // сума всіх надходжень
     let fundPrice = selector.record.funds
       .map((item) => {
         switch (item.price.currency) {
-          case "Dolar":
+          case "Долар":
             return item.price.price / selector.record.currency.USD;
-          case "Euro":
+          case "Євро":
             return item.price.price / selector.record.currency.EUR;
-          case "TL":
+          case "Гривня":
             return item.price.price / selector.record.currency.TRY;
           default:
             return 0;
         }
       })
       .reduce((prev, curr) => prev + curr, 0);
-    // sum all expenses
+    // сума всіх витрат
     let expensePrice = selector.record.expenses
       .map((item) => {
         switch (item.price.currency) {
-          case "Dolar":
+          case "Долар":
             return item.price.price / selector.record.currency.USD;
-          case "Euro":
+          case "Євро":
             return item.price.price / selector.record.currency.EUR;
-          case "TL":
+          case "Гривня":
             return item.price.price / selector.record.currency.TRY;
           default:
             return 0;
@@ -185,10 +182,11 @@ const ExpenseSummary = ({ openModal }) => {
       debt: debt,
     });
   }, [selector.record.funds, selector.record.expenses]);
+  
   return (
     <section className="expenseSummary">
       <div className="summary-container">
-        <h2>Summary</h2>
+        <h2>Зведення</h2>
         <BudgetBoard
           debt={sum.debt}
           currentMoney={sum.currentMoney}

@@ -108,16 +108,16 @@ const SignUp = () => {
     return (
       <Notification
         type={ERROR}
-        label="Something went wrong"
+        label="Щось пішло не так"
         text={
           error.fullname
-            ? "Your full name must be at least 4 characters."
+            ? "Ваше повне ім'я має містити принаймні 4 символи."
             : error.email
-            ? "Your email is not valid."
+            ? "Ваша електронна пошта недійсна."
             : error.password
-            ? "Password must be at least 8 characters."
+            ? "Пароль має містити принаймні 8 символів."
             : error.repassword
-            ? "Password and repassword must be same."
+            ? "Паролі мають співпадати."
             : ""
         }
       />
@@ -134,33 +134,33 @@ const SignUp = () => {
         <Form.Form>
           {order.fullname.toggle && (
             <div className={`${order.fullname.toggle ? "fadeInAndScale" : "fadeOutAndScale"}`}>
-              <h1>Sign Up</h1>
-              <p>First, enter your fullname...</p>
+              <h1>Реєстрація</h1>
+              <p>Спочатку введіть ваше повне ім'я...</p>
               <Form.SignInput
                 type="text"
-                label="Full name"
-                placeholder="Full name"
+                label="Повне ім'я"
+                placeholder="Повне ім'я"
                 order={order}
                 name="fullname"
                 onChange={setorder}
                 onClick={setFalseAllError}
               />
               <Form.SignButton
-                label="Continue"
+                label="Продовжити"
                 onClick={() => orderHandler("fullname")}
               />
               <div className="pageChange">
-                <Link to="/signin">Are you already member?</Link>
+                <Link to="/signin">Вже зареєстровані?</Link>
               </div>
             </div>
           )}
           {order.email.toggle && (
             <div className={`${order.email.toggle ? "fadeInAndScale" : "fadeOutAndScale"}`}>
-              <h1>Sign Up</h1>
-              <p>First, enter your email...</p>
+              <h1>Реєстрація</h1>
+              <p>Тепер введіть вашу електронну пошту...</p>
               <Form.SignInput
                 type="text"
-                label="Email adress"
+                label="Електронна пошта"
                 placeholder="email@provider.com"
                 order={order}
                 name="email"
@@ -168,28 +168,28 @@ const SignUp = () => {
                 onClick={setFalseAllError}
               />
               <Form.SignButton
-                label="Continue"
+                label="Продовжити"
                 onClick={() => orderHandler("email")}
               />
               <div className="pageChange">
-                <Link to="/signin">Are you already member?</Link>
+                <Link to="/signin">Вже зареєстровані?</Link>
               </div>
             </div>
           )}
           {order.password.toggle && (
             <div className={`${order.password.toggle ? "fadeInAndScale" : "fadeOutAndScale"}`}>
-              <p>And, enter your password...</p>
+              <p>Тепер введіть ваш пароль...</p>
               <Form.SignInput
                 type="password"
-                label="Password"
-                placeholder="Your password"
+                label="Пароль"
+                placeholder="Ваш пароль"
                 order={order}
                 name="password"
                 onChange={setorder}
                 onClick={setFalseAllError}
               />
               <Form.SignButton
-                label="Continue"
+                label="Продовжити"
                 onClick={() => orderHandler("password")}
               />
             </div>
@@ -198,18 +198,18 @@ const SignUp = () => {
             <div
               className={`${order.repassword.toggle ? "fadeInAndScale" : "fadeOutAndScale"}`}
             >
-              <p>At last, enter your password again...</p>
+              <p>Нарешті, введіть пароль ще раз...</p>
               <Form.SignInput
                 type="password"
-                label="Password"
-                placeholder="Your password"
+                label="Пароль"
+                placeholder="Ваш пароль"
                 order={order}
                 name="repassword"
                 onChange={setorder}
                 onClick={setFalseAllError}
               />
               <Form.SignButton
-                label="Finish"
+                label="Завершити"
                 onClick={() => orderHandler("repassword")}
               />
             </div>
@@ -218,15 +218,15 @@ const SignUp = () => {
             <div
               className={`${order.finished.toggle ? "fadeInAndScaleSlow" : "fadeOutAndScale"}`}
             >
-              <h1>{error.submit ? "Something went wrong!" : "Thank you!"}</h1>
+              <h1>{error.submit ? "Щось пішло не так!" : "Дякуємо!"}</h1>
               <p className="finish-text fadeInDelay">
                 {error.submit ? (
                   <>
-                    We are sorry, do you wanna <Link to="/">go home</Link>?
+                    Вибачте, хочете повернутися на <Link to="/">головну</Link>?
                   </>
                 ) : (
                   <>
-                    You can <Link to="/signin">sign in</Link> now.
+                    Тепер ви можете <Link to="/signin">увійти</Link>.
                   </>
                 )}
               </p>

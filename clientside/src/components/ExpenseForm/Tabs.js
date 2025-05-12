@@ -8,14 +8,14 @@ const Tabs = ({ children, tabHandler, tab }) => {
       <div className="tab-changer-top">
         <Button.AddExpense
           icon={<Icon.Expense size="22" />}
-          label="Add Expense"
+          label="Додати витрату"
           onClick={() => {
             tabHandler(1);
           }}
         />
         <Button.AddIncome
           icon={<Icon.Income size="22" />}
-          label="Add Funds"
+          label="Додати дохід"
           onClick={() => {
             tabHandler(2);
           }}
@@ -23,7 +23,11 @@ const Tabs = ({ children, tabHandler, tab }) => {
       </div>
       <div
         className="tabs-container"
-        style={tab.translate === 1 ? { transform: "translateX(0)" } : { transform: "translateX(calc(-50% - 25px))" }}
+        style={
+          tab.translate === 1
+            ? { transform: "translateX(0)" }
+            : { transform: "translateX(calc(-50% - 25px))" }
+        }
       >
         {children}
       </div>

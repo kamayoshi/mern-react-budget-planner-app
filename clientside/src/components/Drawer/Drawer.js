@@ -22,11 +22,11 @@ const Drawer = () => {
     <aside className={`default-drawer ${toggle && "active"}`}>
       <div className="hidden-settings">
         <div className="setting-item">
-          <label>Dark mode:</label>
+          <label>Темна тема:</label>
           <Button.OnOffButton />
         </div>
         <div className="setting-item">
-          <label>Currency:</label>
+          <label>Валюта:</label>
           <div className="currency-select">
             <div
               className="currency"
@@ -59,36 +59,35 @@ const Drawer = () => {
       </div>
       <nav>
         <Link to="/">
-          <Button.DrawerNavButton label="Home" icon={<Icon.Home size="22" />} />
+          <Button.DrawerNavButton label="Головна" icon={<Icon.Home size="22" />} />
         </Link>
         <Link to="/transactions">
           <Button.DrawerNavButton
-            label="Transactions"
+            label="Транзакції"
             icon={<Icon.Calculate size="22" />}
           />
         </Link>
         <Button.DrawerNavButton
           onClick={() => settoggle(!toggle)}
-          label="Settings"
+          label="Налаштування"
           icon={<Icon.Settings size="22" />}
         />
         {
           user.fullname === null ?
           <Link to="/signin">
-          <Button.DrawerNavButton
-            label="Sign In"
-            icon={<Icon.User size="22" />}
-          />
-        </Link>
-        :
-        <Link to="/logout">
-          <Button.DrawerNavButton
-            label="Log out"
-            icon={<Icon.Logout size="22" />}
-          />
-        </Link>
+            <Button.DrawerNavButton
+              label="Увійти"
+              icon={<Icon.User size="22" />}
+            />
+          </Link>
+          :
+          <Link to="/logout">
+            <Button.DrawerNavButton
+              label="Вийти"
+              icon={<Icon.Logout size="22" />}
+            />
+          </Link>
         }
-        
       </nav>
     </aside>
   );

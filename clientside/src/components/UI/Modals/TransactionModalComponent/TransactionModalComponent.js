@@ -43,26 +43,26 @@ const TransactionModalComponent = ({ record, modal, setModal }) => {
               );
               return (
                 <div className="transaction-item">
-                  <label>Fund Item <button type="button" onClick={() => setModal({ status: false })}><Icon.Back size="18" /></button></label>
+                  <label>Надходження <button type="button" onClick={() => setModal({ status: false })}><Icon.Back size="18" /></button></label>
                   <div className="_top">
                     <div className="category">
-                      Category: <span>{item.source}</span>
+                      Категорія: <span>{item.source}</span>
                     </div>
                     <div className="person">
-                      Earning By: <span>{item.earningBy}</span>
+                      Отримано від: <span>{item.earningBy}</span>
                     </div>
                     <div className="date">
-                      Date: <span>{dateShow(date)}</span>
+                      Дата: <span>{dateShow(date)}</span>
                     </div>
                   </div>
                   <div className="desc">
-                    Note: <span>{item.note ? item.note : "No note"}</span>
+                    Примітка: <span>{item.note ? item.note : "Без примітки"}</span>
                   </div>
                   <div className="price">
-                    Price: <span>{currencyIcon(item.price.currency)}{item.price.price}</span>
+                    Сума: <span>{currencyIcon(item.price.currency)}{item.price.price}</span>
                   </div>
                   <Button.Submit style={{ marginTop: "15px" }} onClick={() => deletefund(item._id)}>
-                    { loading ? <Icon.Spinner size="15" /> : "REMOVE" }
+                    { loading ? <Icon.Spinner size="15" /> : "ВИДАЛИТИ" }
                   </Button.Submit>
                 </div>
               );
@@ -76,31 +76,31 @@ const TransactionModalComponent = ({ record, modal, setModal }) => {
               );
               return (
                 <div className="transaction-item" key={index}>
-                  <label>Expense Item <button type="button" onClick={() => setModal({ status: false })}><Icon.Back size="18" /></button></label>
+                  <label>Витрата <button type="button" onClick={() => setModal({ status: false })}><Icon.Back size="18" /></button></label>
                   <div className="_top">
                     <div className="category">
-                      Category: <span>{item.category}</span>
+                      Категорія: <span>{item.category}</span>
                     </div>
                     <div className="person">
-                      Spending By: <span>{item.spendingBy}</span>
+                      Витрачено: <span>{item.spendingBy}</span>
                     </div>
                     <div className="date">
-                      Date: <span>{dateShow(date)}</span>
+                      Дата: <span>{dateShow(date)}</span>
                     </div>
                   </div>
                   <div className="name">
-                    Name: <span>{item.name}</span>
+                    Назва: <span>{item.name}</span>
                   </div>
                   {item.note && (
                     <div className="desc">
-                      Note: <span>{item.note}</span>
+                      Примітка: <span>{item.note}</span>
                     </div>
                   )}
                   <div className="price">
-                    Price: <span>{currencyIcon(item.price.currency)}{item.price.price}</span>
+                    Сума: <span>{currencyIcon(item.price.currency)}{item.price.price}</span>
                   </div>
                   <Button.Submit style={{ marginTop: "15px" }} onClick={() => deleteexpense(item._id)}>
-                  { loading ? <Icon.Spinner size="15" /> : "REMOVE" }
+                  { loading ? <Icon.Spinner size="15" /> : "ВИДАЛИТИ" }
                   </Button.Submit>
                 </div>
               );

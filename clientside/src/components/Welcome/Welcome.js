@@ -7,10 +7,10 @@ const Welcome = () => {
   return (
     <section className="welcome">
       { user.fullname !== null ? <>
-        <div className="welcome-text"><strong>Welcome</strong>, { user.fullname }. How are you feeling today?</div>
-        <div className="logout"><Link to="/logout">Logout</Link></div>
+        <div className="welcome-text"><strong>Ласкаво просимо</strong>, { user.fullname }. Як ви сьогодні почуваєтесь?</div>
+        <div className="logout"><Link to="/logout">Вийти</Link></div>
       </>
-      : <div className="welcome-text"><strong>Welcome</strong>, it's just demo. If you wanna your records not to be lost please <Link to="/signin">sign in</Link>.</div>
+      : <div className="welcome-text"><strong>Ласкаво просимо</strong>, це демонстраційний режим. Щоб зберегти ваші записи, будь ласка <Link to="/signin">увійдіть</Link>.</div>
     }
     
     </section>

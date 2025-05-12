@@ -7,7 +7,7 @@ export const SpendingBy = ({ prop }) => {
   const { label, dispatch, selector } = prop;
   const [searchTerm, setSearchTerm] = useState("");
 
-  // spendingBy select handler
+  // обробник вибору особи
   const spendingByHandler = (e) => {
     dispatch(addExpenseItem("spendingBy", e.currentTarget.getAttribute("label")));
   };
@@ -28,13 +28,30 @@ export const SpendingBy = ({ prop }) => {
               selector.toggle.spendingBy ? "active" : ""
             }`}
           >
-            <input type="text" placeholder="Search person..." onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
-            { recordState.persons.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).map((person, index) => (
-              <button key={index} type="button" label={person.name} value={person.name} onClick={spendingByHandler}>
-              {person.name}
-            </button>
-            )) }
-            {recordState.persons.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).length < 1 &&  <p>There are no records...</p>}
+            <input 
+              type="text" 
+              placeholder="Пошук особи..." 
+              onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} 
+            />
+            { recordState.persons
+                .filter((item) => 
+                  item.name.toLowerCase().match(new RegExp(searchTerm, 'g')))
+                .map((person, index) => (
+                  <button 
+                    key={index} 
+                    type="button" 
+                    label={person.name} 
+                    value={person.name} 
+                    onClick={spendingByHandler}
+                  >
+                    {person.name}
+                  </button>
+                )) 
+            }
+            {recordState.persons.filter((item) => 
+              item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).length < 1 &&  
+              <p>Записи відсутні...</p>
+            }
           </div>
         </div>
       </div>

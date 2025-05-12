@@ -7,10 +7,11 @@ export const IncomeSource = ({ prop }) => {
   const { label, dispatch, selector } = prop;
   const [searchTerm, setSearchTerm] = useState("");
 
-  // income source select handler
+  // обробник вибору джерела доходу
   const incomeSourceHandler = (e) => {
     dispatch(addIncomeItem("source", e.currentTarget.getAttribute("label")));
   };
+  
   return (
     <div className="addIncomeItem">
       <label>{label}</label>
@@ -28,7 +29,7 @@ export const IncomeSource = ({ prop }) => {
           >
             <input
               type="text"
-              placeholder="Search person..."
+              placeholder="Пошук джерела..."
               onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
             />
             {recordState.sources
@@ -47,7 +48,7 @@ export const IncomeSource = ({ prop }) => {
               ))}
             {recordState.sources.filter((item) =>
               item.name.toLowerCase().match(new RegExp(searchTerm, "g"))
-            ).length < 1 && <p>There are no records...</p>}
+            ).length < 1 && <p>Записи відсутні...</p>}
           </div>
         </div>
       </div>

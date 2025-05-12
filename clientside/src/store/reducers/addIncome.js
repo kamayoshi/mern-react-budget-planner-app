@@ -4,9 +4,9 @@ import moment from "moment";
 const date = moment().format("l").split("/");
 
 const initialState = {
-  source: "Not selected",
+  source: "Не обрано",
   price: { currency: localStorage.getItem("currency"), price: null },
-  earningBy: "Not selected",
+  earningBy: "Не обрано",
   date: {
     day: date[1],
     month: date[0],
@@ -23,6 +23,7 @@ const initialState = {
     addSource: false,
   },
 };
+
 const addIncomeReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.ADD_INCOME_FORM:
@@ -47,9 +48,9 @@ const addIncomeReducer = (state = initialState, action) => {
     case actionType.CLEAR_INCOME:
       return {
         ...state,
-        source: "Not selected",
+        source: "Не обрано",
         price: { currency: localStorage.getItem("currency"), price: 0 },
-        earningBy: "Not selected",
+        earningBy: "Не обрано",
         date: {
           day: date[1],
           month: date[0],

@@ -1,7 +1,7 @@
 import CryptoJS from "crypto-js"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
-// model imports
+// імпорт моделей
 import UserModel from "../models/user.js"
 import RecordModel from "../models/record.js"
 
@@ -9,21 +9,21 @@ dotenv.config();
 
 const { CLIENT_URL, SECRET_KEY, ACCESS_TOKEN, ACTIVATION_TOKEN_SECRET } = process.env
 
-// -> controllers
-// signUp
+// -> контролери
+// реєстрація
 export const signUp = async (req, res) => {
-    // req seperation
+    // отримання даних з запиту
     const { fullname, email, password } = req.body
     try {
-        // check if req is empty
-        if(!fullname || !email || !password) return res.status(400).json({ msg: "Please fill in all fields." })
-        // check if email adress is valid
-        if(!validateEmailAdress(email)) return res.status(400).json({ msg: "Invalid email adress." });
-        // check password length
-        if(password.length < 8) return res.status(400).json({ msg: "Password must be at least 8 characters." })
-        // check if the email is exist
+        // перевірка наявності даних
+        if(!fullname || !email || !password) return res.status(400).json({ msg: "Будь ласка, заповніть всі поля." })
+        // перевірка валідності email
+        if(!validateEmailAdress(email)) return res.status(400).json({ msg: "Невірна email адреса." });
+        // перевірка довжини паролю
+        if(password.length < 8) return res.status(400).json({ msg: "Пароль має містити принаймні 8 символів." })
+        // перевірка наявності користувача
         const existUser = await UserModel.findOne({ email })
-        if (existUser) { return res.status(400).json({ msg: "An user has already registered with this email." })}
+        if (existUser) { return res.status(400).json({ msg: "Користувач з таким email вже зареєстрований." })}
         else { 
         const cryptedPassword = await CryptoJS.AES.encrypt(
             password,
@@ -40,7 +40,7 @@ export const signUp = async (req, res) => {
           })
           newProfile.save()
           return res.json({
-            msg: "You have successfully registered!",
+            msg: "Ви успішно зареєструвались!",
         })
         })
         
@@ -50,18 +50,18 @@ export const signUp = async (req, res) => {
     }
 }
 
-// signIn
+// вхід
 export const signIn = async (req, res) => {
     try {
       const user = await UserModel.findOne({ email: req.body.email });
   
       if (!user) {
-        return res.status(400).json({ msg: "false" }); 
+        return res.status(400).json({ msg: "Невірні дані" }); 
       } else {
         const bytes = CryptoJS.AES.decrypt(user.password, SECRET_KEY);
         const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
         if (originalPassword !== req.body.password)
-          return res.status(401).json({ msg: "false" });
+          return res.status(401).json({ msg: "Невірні дані" });
         const accessToken = jwt.sign(
           {
             id: user._id,
@@ -76,10 +76,11 @@ export const signIn = async (req, res) => {
       }
       
     } catch (err) {
-      return res.status(500).json({ msg: "false" });
+      return res.status(500).json({ msg: "Помилка сервера" });
     }
   };
 
+  // отримання даних користувача
   export const fetchAnUser = async (req, res) => {
     try {
       const id = req.params.id;
@@ -88,14 +89,15 @@ export const signIn = async (req, res) => {
         if (user) {
           return res.status(200).json({ msg: user });
         } else {
-          return res.status(400).json({ msg: "This doesnt exist!" });
+          return res.status(400).json({ msg: "Цей запис не існує!" });
         }
       }
     } catch (err) {
-      return res.status(500).json({ msg: "Something went wrong" });
+      return res.status(500).json({ msg: "Щось пішло не так" });
     }
   };
 
+// валідація email адреси
 const validateEmailAdress = (email) => {
     const re =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
