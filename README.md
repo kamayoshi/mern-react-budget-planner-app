@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MERN React Budget Planner App
 
 A powerful, elegance and MERN Full-Stack, budget planning app written in React.JS
@@ -48,3 +49,6 @@ Here is [DEMO](https://mern-react-budget-planner-app.netlify.app/)!
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## ...with love by Emre Güney
+=======
+# mern-react-budget-planner-app
+>>>>>>> 17d1bcc76315546876c1917bdbdd302ac5dc882b
